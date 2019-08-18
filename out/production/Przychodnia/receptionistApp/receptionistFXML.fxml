@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="1236.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="receptionistApp.ReceptionistController">
+   <children>
+      <TabPane fx:id="PatientsTabPane" prefHeight="649.0" prefWidth="1236.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Pacjenci">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="535.0">
+                     <children>
+                        <TableView fx:id="patientsTableView" layoutX="334.0" layoutY="7.0" prefHeight="602.0" prefWidth="895.0">
+                          <columns>
+                            <TableColumn fx:id="peselColumn" prefWidth="90.0" text="Pesel" />
+                            <TableColumn fx:id="nameColumn" prefWidth="120.0" text="Imię" />
+                              <TableColumn fx:id="surnameColumn" prefWidth="130.0" text="Nazwisko" />
+                              <TableColumn fx:id="birthDataColumn" prefWidth="130.0" text="Data i miejsce ur." />
+                              <TableColumn fx:id="sexColumn" prefWidth="90.0" text="Płeć" />
+                              <TableColumn fx:id="phoneNumberColumn" prefWidth="110.0" text="Numer telefonu" />
+                              <TableColumn fx:id="addressColumn" prefWidth="223.0" text="Adres" />
+                          </columns>
+                        </TableView>
+                        <TitledPane animated="false" layoutX="19.0" layoutY="14.0" prefHeight="595.0" prefWidth="295.0" text="Dodawanie pacjenta">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="563.0" prefWidth="293.0">
+                                 <children>
+                                    <TitledPane animated="false" layoutX="15.0" layoutY="252.0" prefHeight="246.0" prefWidth="264.0" text="Dane adresowe:">
+                                       <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="262.0">
+                                             <children>
+                                                <TextField fx:id="countryField" layoutX="97.0" layoutY="14.0" text="POLSKA" />
+                                                <TextField fx:id="voivodeshipField" layoutX="97.0" layoutY="42.0" promptText="województwo" />
+                                                <TextField fx:id="cityField" layoutX="97.0" layoutY="70.0" promptText="miasto" />
+                                                <TextField fx:id="zipCodeField" layoutX="97.0" layoutY="98.0" promptText="00-000" />
+                                                <TextField fx:id="streetField" layoutX="97.0" layoutY="126.0" promptText="ulica" />
+                                                <TextField fx:id="buildingNumberField" layoutX="97.0" layoutY="154.0" promptText="numer budynku" />
+                                                <Label layoutX="36.0" layoutY="18.0" text="Kraj:" />
+                                                <Label layoutX="8.0" layoutY="46.0" text="Województwo:" />
+                                                <Label layoutX="30.0" layoutY="74.0" text="Miasto:" />
+                                                <Label layoutX="11.0" layoutY="102.0" text="Kod pocztowy:" />
+                                                <Label layoutX="34.0" layoutY="130.0" text="Ulica:" />
+                                                <Label layoutX="4.0" layoutY="158.0" text="Numer budynku:" />
+                                                <TextField fx:id="apartmentNumberField" layoutX="97.0" layoutY="182.0" promptText="numer lokalu" />
+                                                <Label layoutX="11.0" layoutY="186.0" text="Numer lokalu:" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" layoutX="14.0" layoutY="11.0" prefHeight="233.0" prefWidth="265.0" text="Dane osobowe:">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="213.0" prefWidth="263.0">
+                                             <children>
+                                                <TextField fx:id="nameField" layoutX="81.0" layoutY="13.0" promptText="imię" />
+                                                <TextField fx:id="surnameField" layoutX="81.0" layoutY="41.0" promptText="nazwisko" />
+                                                <TextField fx:id="peselField" layoutX="81.0" layoutY="69.0" onKeyReleased="#peselFieldOnKeyReleased" promptText="pesel" />
+                                                <TextField fx:id="dateOfBirthField" editable="false" layoutX="84.0" layoutY="119.0" promptText="date urodzin">
+                                                   <cursor>
+                                                      <Cursor fx:constant="DEFAULT" />
+                                                   </cursor></TextField>
+                                                <TextField fx:id="placeOfBirthField" layoutX="84.0" layoutY="147.0" promptText="miejsce urodzenia" />
+                                                <TextField fx:id="phoneNumberField" layoutX="84.0" layoutY="175.0" promptText="numer telefonu">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets></TextField>
+                                                <Label layoutX="30.0" layoutY="17.0" text="Imię:" />
+                                                <Label layoutX="16.0" layoutY="45.0" text="Nazwisko:" />
+                                                <Label layoutX="28.0" layoutY="73.0" text="Pesel:" />
+                                                <Label fx:id="labelPeselValidation" layoutX="105.0" layoutY="97.0" prefHeight="17.0" prefWidth="125.0">
+                                                   <font>
+                                                      <Font name="System Bold Italic" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="12.0" layoutY="98.0" text="Weryfikacja:" />
+                                                <Label layoutX="8.0" layoutY="123.0" text="Data urodzin:" />
+                                                <Label layoutX="16.0" layoutY="147.0" prefHeight="24.0" prefWidth="56.0" text="Miesce ur:" />
+                                                <Label layoutX="13.0" layoutY="179.0" text="Nr telefonu:" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </TitledPane>
+                                    <Button fx:id="addPatientButton" layoutX="14.0" layoutY="505.0" mnemonicParsing="false" onAction="#addPatientButtonOnAction" prefWidth="130.0" text="Dodaj pacjenta" />
+                                    <Button fx:id="clearFormButton" layoutX="147.0" layoutY="505.0" mnemonicParsing="false" onAction="#clearFormButtonOnAction" prefWidth="130.0" text="Wyczyść formularz" />
+                                    <Label fx:id="labelFieldValidation" layoutX="15.0" layoutY="536.0" prefHeight="22.0" prefWidth="286.0" textFill="RED">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Wizyty">
+            <content>
+              <AnchorPane>
+                     <children>
+                        <TableView fx:id="patientsTableViewVisit" layoutX="334.0" layoutY="7.0" onMouseClicked="#patientsTableViewVisit_OnMouseClicked" prefHeight="303.0" prefWidth="895.0">
+                           <columns>
+                              <TableColumn fx:id="peselColumnVisit" prefWidth="90.0" text="Pesel" />
+                              <TableColumn fx:id="nameColumnVisit" prefWidth="120.0" text="Imię" />
+                              <TableColumn fx:id="surnameColumnVisit" prefWidth="130.0" text="Nazwisko" />
+                              <TableColumn fx:id="birthDataColumnVisit" prefWidth="130.0" text="Data i miejsce ur." />
+                              <TableColumn fx:id="sexColumnVisit" prefWidth="90.0" text="Płeć" />
+                              <TableColumn fx:id="phoneNumberColumnVisit" prefWidth="110.0" text="Numer telefonu" />
+                              <TableColumn fx:id="addressColumnVisit" prefWidth="223.0" text="Adres" />
+                           </columns>
+                        </TableView>
+                        <TitledPane animated="false" layoutX="19.0" layoutY="7.0" prefHeight="300.0" prefWidth="295.0" text="Dodaj wizytę">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="263.0" prefWidth="293.0">
+                                 <children>
+                                    <TextField fx:id="visitName" layoutX="87.0" layoutY="8.0" prefHeight="25.0" prefWidth="176.0" promptText="imię" />
+                                    <TextField fx:id="visitSurname" layoutX="87.0" layoutY="35.0" prefHeight="25.0" prefWidth="176.0" promptText="nazwiko" />
+                                    <TextField fx:id="visitPesel" layoutX="87.0" layoutY="62.0" prefWidth="176.0" promptText="pesel" />
+                                    <TextField fx:id="visitPhoneNumber" layoutX="87.0" layoutY="89.0" prefHeight="25.0" prefWidth="176.0" promptText="numer telefonu" />
+                                    <JFXDatePicker fx:id="visitDatePicker" defaultColor="#484868" layoutX="89.0" layoutY="116.0" onAction="#visitDatePickerOnAction" prefWidth="180.0" />
+                                    <JFXTimePicker fx:id="visitTimePicker" defaultColor="#484868" layoutX="89.0" layoutY="149.0" prefWidth="180.0" />
+                                    <ComboBox fx:id="visitDoctorComboBox" layoutX="86.0" layoutY="187.0" prefHeight="25.0" prefWidth="176.0" promptText="wybierz lekarza" />
+                                    <Button fx:id="addVisitButton" layoutX="100.0" layoutY="219.0" mnemonicParsing="false" onAction="#addVisitButtoOnAction" prefWidth="118.0" text="Dodaj wizytę" />
+                                    <Label layoutX="39.0" layoutY="11.0" text="Imię:" />
+                                    <Label layoutX="27.0" layoutY="39.0" text="Nazwisko:" />
+                                    <Label layoutX="38.0" layoutY="66.0" text="Pesel:" />
+                                    <Label layoutX="20.0" layoutY="93.0" text="Nr telefonu:" />
+                                    <Label layoutX="37.0" layoutY="124.0" text="Data:" />
+                                    <Label layoutX="30.0" layoutY="155.0" text="Godzina:" />
+                                    <Label layoutX="34.0" layoutY="190.0" text="Lekarz:" />
+                                    <Label fx:id="visitSectionVeryficationLabel" layoutX="15.0" layoutY="251.0" prefHeight="17.0" prefWidth="267.0" textFill="RED">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TableView fx:id="visitTableView" layoutX="334.0" layoutY="317.0" prefHeight="292.0" prefWidth="895.0">
+                          <columns>
+                            <TableColumn fx:id="peselColumnVisitTable" minWidth="90.0" prefWidth="75.0" text="Pesel" />
+                            <TableColumn fx:id="nameColumnVisitTable" prefWidth="120.0" text="Imię" />
+                              <TableColumn fx:id="surnameColumnVisitTable" prefWidth="130.0" text="Nazwisko" />
+                              <TableColumn fx:id="phoneNumberColumnVisitTable" prefWidth="120.0" text="Numer telefonu" />
+                              <TableColumn fx:id="dateColumn" prefWidth="120.0" text="Data wizyty" />
+                              <TableColumn fx:id="timeColumn" prefWidth="120.0" text="Godzina wizyty" />
+                              <TableColumn fx:id="doctorColumn" prefWidth="193.0" text="Lekarz" />
+                          </columns>
+                        </TableView>
+                        <TitledPane animated="false" expanded="false" layoutX="19.0" layoutY="317.0" prefHeight="76.0" prefWidth="295.0" text="Zapisz wizyty">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="38.0" prefWidth="293.0">
+                                 <children>
+                                    <Button fx:id="saveButton" layoutX="154.0" layoutY="13.0" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="25.0" prefWidth="123.0" text="Zapisz jako..." />
+                                    <Label layoutX="14.0" layoutY="17.0" text="Zapisz wizyty do pliku: " />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
